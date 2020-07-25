@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
@@ -32,6 +33,9 @@ public class ControllerApp implements Initializable {
     @FXML
     private TextArea fieldResult;
 
+    @FXML
+    private ComboBox<String> changeExample;
+
     Stage primaryStage;
 
     public Stage getPrimaryStage() {
@@ -42,31 +46,54 @@ public class ControllerApp implements Initializable {
         this.primaryStage = primaryStage;
     }
 
+    public ComboBox<String> getChangeExample() {
+        return (ComboBox<String>) changeExample;
+    }
+
+    public void setChangeExample(ComboBox<String> changeExample) {
+        this.changeExample = changeExample;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
-    public void saveResult(ActionEvent actionEvent){
-        WriterInFile.writeInFile(fieldEnter.getText(), primaryStage);
+    public void saveResult(ActionEvent actionEvent) {
+        WriterInFile.writeInFile(fieldEnter.getText(), primaryStage, changeExample);
 
     }
 
-    public void loadResult(ActionEvent actionEvent){
-        fieldEnter.setText(ReaderFromFile.readFromFile(primaryStage));
+    public void loadResult(ActionEvent actionEvent) {
+        String rawData = ReaderFromFile.readFromFile(primaryStage);
+        String data = "";
+        if (rawData.contains("#NumberExpanded#\n")) {
+            data = rawData.replace("#NumberExpanded#\n", "");
+            changeExample.setValue("NumberExpanded");
+        }
+        if (rawData.contains("#LexicOrderArray#\n")) {
+            data = rawData.replace("#LexicOrderArray#\n", "");
+            changeExample.setValue("LexicOrderArray");
+
+        }
+        fieldEnter.setText(data);
+
     }
 
-    public void clearScreen(ActionEvent actionEvent){
+    public void clearScreen(ActionEvent actionEvent) {
         fieldResult.clear();
         fieldEnter.clear();
 
     }
 
-    public void countExample(ActionEvent actionEvent){
+    public void chooseExample(ActionEvent actionEvent) {
+        //clearScreen(null);
+    }
+
+    public void countExample(ActionEvent actionEvent) {
 
 
     }
-
 
 
 }

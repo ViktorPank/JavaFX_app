@@ -1,6 +1,7 @@
 package IOFile;
 
 import Controller.ControllerApp;
+import javafx.scene.control.ComboBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -10,8 +11,8 @@ import java.io.IOException;
 
 public class WriterInFile {
 
-    public static void writeInFile(String data, Stage primaryStage) {
-        if (data != null) {
+    public static void writeInFile(String data, Stage primaryStage, ComboBox<String> chooseExample) {
+        if (!data.equals("") && chooseExample != null) {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Сохранить данные в файл");
             FileChooser.ExtensionFilter extensionFilter =
@@ -19,8 +20,9 @@ public class WriterInFile {
             fileChooser.getExtensionFilters().add(extensionFilter);
             File file = fileChooser.showSaveDialog(primaryStage);
 
-            try (FileWriter writer = new FileWriter(file , false)) {
-                writer.write(data);
+            try (FileWriter writer = new FileWriter(file, false)) {
+                writer.append("#" + chooseExample.getValue()+ "#" + "\n");
+                writer.append(data);
                 writer.flush();
             } catch (IOException e) {
                 e.printStackTrace();

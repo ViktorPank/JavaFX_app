@@ -32,6 +32,6 @@ public class ReaderFromFile {
         }catch (IOException ex){
             System.out.println(ex.getMessage());
         }
-        return String.valueOf(stringBuffer);
+        return stringBuffer.toString();
     }
 }
