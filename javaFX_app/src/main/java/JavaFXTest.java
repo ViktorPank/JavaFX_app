@@ -1,4 +1,7 @@
+import Controller.ControllerApp;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,17 +11,23 @@ import javafx.stage.Stage;
 import java.io.InputStream;
 
 public class JavaFXTest extends Application {
+
+
     public static void main(String[] args) {
         Application.launch();
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        ObservableList<String> examples = FXCollections.observableArrayList("NumberExpanded", "Lexic");
         //Load FXML and set setting
         try {
             // Read file fxml and draw interface.
-            Parent root = FXMLLoader.load(getClass()
-                    .getResource("/MyScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MyScene.fxml"));
+            Parent root = loader.load();
+            ControllerApp controllerApp = (ControllerApp) loader.getController();
+            controllerApp.setPrimaryStage(primaryStage);
             primaryStage.setTitle("My Application");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
@@ -30,11 +39,12 @@ public class JavaFXTest extends Application {
         /*
         Load icon
          */
-        InputStream iconStream = getClass().getResourceAsStream("/images/man.png");
+        InputStream iconStream = getClass().getResourceAsStream("images/man.png");
         Image image = new Image(iconStream);
         primaryStage.getIcons().add(image);
 
        // primaryStage.show();
 
     }
+
 }
