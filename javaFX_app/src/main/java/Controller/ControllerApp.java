@@ -58,9 +58,7 @@ public class ControllerApp implements Initializable {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
+    public void initialize(URL location, ResourceBundle resources) {   }
 
     public void saveResult(ActionEvent actionEvent) {
         WriterInFile.writeInFile(fieldEnter.getText(), primaryStage, changeExample);
