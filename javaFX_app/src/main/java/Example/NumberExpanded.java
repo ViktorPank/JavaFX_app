@@ -27,16 +27,20 @@ public class NumberExpanded implements Calculations {
             return new StringBuffer("Некорректное число");
         }
 
-        for (int i = 0; i < numberStr.length(); i++) {
-            if (!(numberStr.charAt(i) == '0')) {
+        if (number > 0) {
+            for (int i = 0; i < numberStr.length(); i++) {
+                if (!(numberStr.charAt(i) == '0')) {
 
-                expandedNumber.append(numberStr.charAt(i));
-                for (int j = numberStr.length() - i - 1; j > 0; j--) {
-                    expandedNumber.append("0");
+                    expandedNumber.append(numberStr.charAt(i));
+                    for (int j = numberStr.length() - i - 1; j > 0; j--) {
+                        expandedNumber.append("0");
+                    }
+                    if (!(numberStr.length() - 1 == i)) expandedNumber.append("+");
                 }
-                if (!(numberStr.length() - 1 == i)) expandedNumber.append("+");
             }
+            return expandedNumber;
+        } else {
+            return new StringBuffer("Число равно 0 или отрицательное");
         }
-        return expandedNumber;
     }
 }
