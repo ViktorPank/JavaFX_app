@@ -1,5 +1,5 @@
 package Example;
 
 public interface Calculations {
-     StringBuffer run ();
+     public StringBuffer run ();
 }

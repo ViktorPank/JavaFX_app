@@ -1,5 +1,8 @@
 package Controller;
 
+import Example.Calculations;
+import Example.LexicOrderArray;
+import Example.NumberExpanded;
 import IOFile.ReaderFromFile;
 import IOFile.WriterInFile;
 import javafx.event.ActionEvent;
@@ -91,11 +94,17 @@ public class ControllerApp implements Initializable {
     }
 
     public void countExample(ActionEvent actionEvent) {
-        if (changeExample.getValue().equals("NumberExpanded")){
-
-        }
-        if (changeExample.getValue().equals("LexicOrderArray")){
-
+        if (!(changeExample.getValue() == null) && !(fieldEnter.getText().equals(""))) {
+            if (changeExample.getValue().equals("NumberExpanded")) {
+                Calculations calculations = new NumberExpanded(fieldEnter.getText());
+                fieldResult.setText(calculations.run().toString());
+            }
+            if (changeExample.getValue().equals("LexicOrderArray")) {
+                Calculations calculations = new LexicOrderArray(fieldEnter.getText());
+                fieldResult.setText(calculations.run().toString());
+            }
+        } else {
+            fieldResult.setText("Не выбрана задача или не введены данные");
         }
 
     }
