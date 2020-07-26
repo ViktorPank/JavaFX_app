@@ -31,7 +31,7 @@ public class JavaFXTest extends Application {
             controllerApp.setPrimaryStage(primaryStage);
             ComboBox <String> chooseExample = (ComboBox<String>) controllerApp.getChangeExample();
             chooseExample.setItems(examples);
-            primaryStage.setTitle("My Application");
+            primaryStage.setTitle("Calculating data");
             primaryStage.setScene(new Scene(root));
 
             //Load icon
