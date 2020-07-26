@@ -71,14 +71,15 @@ public class ControllerApp implements Initializable {
         if (rawData.contains("#NumberExpanded#\n")) {
             data = rawData.replace("#NumberExpanded#\n", "");
             changeExample.setValue("NumberExpanded");
+            fieldEnter.setText(data);
+            countExample(null);
         }
         if (rawData.contains("#LexicOrderArray#\n")) {
             data = rawData.replace("#LexicOrderArray#\n", "");
             changeExample.setValue("LexicOrderArray");
-
+            fieldEnter.setText(data);
+            countExample(null);
         }
-        fieldEnter.setText(data);
-
     }
 
     public void clearScreen(ActionEvent actionEvent) {
