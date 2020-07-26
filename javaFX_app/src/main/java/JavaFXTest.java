@@ -33,21 +33,16 @@ public class JavaFXTest extends Application {
             chooseExample.setItems(examples);
             primaryStage.setTitle("My Application");
             primaryStage.setScene(new Scene(root));
+
+            //Load icon
+            InputStream iconStream = getClass().getResourceAsStream("images/man.png");
+            Image image = new Image(iconStream);
+            primaryStage.getIcons().add(image);
             primaryStage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        /*
-        Load icon
-         */
-        InputStream iconStream = getClass().getResourceAsStream("images/man.png");
-        Image image = new Image(iconStream);
-        primaryStage.getIcons().add(image);
-
-       // primaryStage.show();
-
     }
 
 }

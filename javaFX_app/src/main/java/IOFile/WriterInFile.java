@@ -13,6 +13,7 @@ public class WriterInFile {
 
     public static void writeInFile(String data, Stage primaryStage, ComboBox<String> chooseExample) {
         if (!data.equals("") && chooseExample != null) {
+            //init load save dialog
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Сохранить данные в файл");
             FileChooser.ExtensionFilter extensionFilter =
@@ -20,6 +21,7 @@ public class WriterInFile {
             fileChooser.getExtensionFilters().add(extensionFilter);
             File file = fileChooser.showSaveDialog(primaryStage);
 
+            //write in file
             try (FileWriter writer = new FileWriter(file, false)) {
                 writer.append("#" + chooseExample.getValue()+ "#" + "\n");
                 writer.append(data);

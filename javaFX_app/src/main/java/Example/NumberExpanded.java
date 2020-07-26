@@ -1,30 +1,34 @@
 package Example;
 
+/*
+Class implementaion runing example NumberExpanded
+ */
+
 public class NumberExpanded implements Calculations {
-    private StringBuffer data;
+    private StringBuilder data;
 
     public NumberExpanded(String data) {
-        this.data = new StringBuffer(data.subSequence(0, data.length()));
+        this.data = new StringBuilder(data.subSequence(0, data.length()));
     }
 
-    public StringBuffer getData() {
+    public StringBuilder getData() {
         return data;
     }
 
-    public void setData(StringBuffer data) {
+    public void setData(StringBuilder data) {
         this.data = data;
     }
 
     @Override
-    public StringBuffer run() {
+    public StringBuilder run() {
         long number;
         String numberStr;
-        StringBuffer expandedNumber = new StringBuffer();
+        StringBuilder expandedNumber = new StringBuilder();
         try {
             number = Long.parseLong(data.toString().trim());
             numberStr = String.valueOf(number);
         } catch (NumberFormatException ex) {
-            return new StringBuffer("Некорректное число");
+            return new StringBuilder("Некорректное число");
         }
 
         if (number > 0) {
@@ -35,12 +39,12 @@ public class NumberExpanded implements Calculations {
                     for (int j = numberStr.length() - i - 1; j > 0; j--) {
                         expandedNumber.append("0");
                     }
-                    if (!(numberStr.length() - 1 == i)) expandedNumber.append("+");
+                    if (!(numberStr.length() - 1 == i)) expandedNumber.append(" + ");
                 }
             }
             return expandedNumber;
         } else {
-            return new StringBuffer("Число равно 0 или отрицательное");
+            return new StringBuilder("Число равно 0 или отрицательное");
         }
     }
 }

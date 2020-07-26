@@ -8,9 +8,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 
+
 public class ReaderFromFile {
 
     public static String readFromFile(Stage primarystage){
+
+        //init load dialog
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Загрузка файла данных");
         FileChooser.ExtensionFilter extensionFilter =
@@ -19,6 +22,7 @@ public class ReaderFromFile {
         File file = fileChooser.showOpenDialog(primarystage);
         StringBuffer stringBuffer = new StringBuffer();
 
+        //read with buffer
         try (FileReader fileReader = new FileReader(file)){
             char[] buf = new char[256];
             int c;

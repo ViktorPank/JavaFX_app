@@ -15,7 +15,9 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+/*
+    Controller class FXML
+ */
 public class ControllerApp implements Initializable {
 
     @FXML
@@ -60,11 +62,13 @@ public class ControllerApp implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {   }
 
+    //Action button save
     public void saveResult(ActionEvent actionEvent) {
         WriterInFile.writeInFile(fieldEnter.getText(), primaryStage, changeExample);
 
     }
 
+    //Action button load
     public void loadResult(ActionEvent actionEvent) {
         String rawData = ReaderFromFile.readFromFile(primaryStage);
         String data = "";
@@ -82,16 +86,16 @@ public class ControllerApp implements Initializable {
         }
     }
 
+    //Clear textarea enter and result
     public void clearScreen(ActionEvent actionEvent) {
         fieldResult.clear();
         fieldEnter.clear();
 
     }
 
-    public void chooseExample(ActionEvent actionEvent) {
-        //clearScreen(null);
-    }
+    public void chooseExample(ActionEvent actionEvent) {}
 
+    //Action button calculating
     public void countExample(ActionEvent actionEvent) {
         if (!(changeExample.getValue() == null) && !(fieldEnter.getText().equals(""))) {
             if (changeExample.getValue().equals("NumberExpanded")) {
