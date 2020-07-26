@@ -25,7 +25,7 @@ public class JavaFXTest extends Application {
         //Load FXML and set setting
         try {
             // Read file fxml and draw interface.
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("MyScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/MyScene.fxml"));
             Parent root = loader.load();
             ControllerApp controllerApp = (ControllerApp) loader.getController();
             controllerApp.setPrimaryStage(primaryStage);
