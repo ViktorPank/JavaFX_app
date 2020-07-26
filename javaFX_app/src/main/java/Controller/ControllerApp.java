@@ -91,7 +91,12 @@ public class ControllerApp implements Initializable {
     }
 
     public void countExample(ActionEvent actionEvent) {
+        if (changeExample.getValue().equals("NumberExpanded")){
 
+        }
+        if (changeExample.getValue().equals("LexicOrderArray")){
+
+        }
 
     }
 
